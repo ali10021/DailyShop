@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    #input{
+        width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  box-sizing: border-box;
+
+}
+#messagebody{
+    width:70%;
+
+}
+#submit{
+    width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+
+}
+
+div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+</style>
+<body>
+<p>For acount password recovery enter your email that you registered for this account.</p>
+<div>
+<form action="/passrecovery" method="post" enctype="multipart/form-data">
+
+
+    <label for="Email">Email</label><br>
+    <input id="input" type="text" name="email"  placeholder="Email....">
+    <br>
+            {% if warning %}
+
+                    <p style="color:red">Enter valid registered email</p>
+
+            {% endif %}
+    <input type="submit" id="submit"  value="ENTER" onclick="sendmail(email)">
+
+</form>
+
+</div>
+<br><br>
+{% if status %}
+    <script>
+    window.alert("OTP SENT TO YOUR MAIL. Check your email TO VERIFY YOUR ACOUNT")
+    </script>
+{% endif %}
+<div>
+<form action="/otpconfirm" method="post" enctype="multipart/form-data">
+
+
+    <label for="otp">OTP:</label><br>
+    <input id="input" type="text" name="OTP"  placeholder="Enter 6-digit OTP....">
+    <br>
+    {% if recvry==False %}
+     <p style="color:darkred">you entered wrong otp. TRY AGAIN</p>
+{% endif %}
+    <input type="submit" id="submit"  value="ENTER">
+
+</form>
+</div>
+<script>
+    function sendmail(email)
+    {
+        email=document.getElementById("input").value
+       var ajaxReq = new XMLHttpRequest();
+            ajaxReq.open("POST", "/passrecovery", true);
+            ajaxReq.send(email)
+       ajaxReq.onreadystatechange = function () {
+                if (ajaxReq.readyState == 4 && ajaxReq.status == 200) {
+                    var data = JSON.parse(ajaxReq.responseText);
+                    if (data[0].check == "true")
+                    {
+                         alert("password send on your email")
+                    }
+                    else
+                    {
+                        alert("Email not exixst")
+                    }
+                    }
+                }
+    }
+</script>
+
+
+</body>
+</html>

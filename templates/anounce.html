@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+      <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Free Bootstrap Admin Template : Binary Admin</title>
+	<!-- BOOTSTRAP STYLES-->
+    <!-- BOOTSTRAP STYLES-->
+    <!--<link href="assets/css/bootstrap.css" rel="stylesheet" />-->
+     <link rel="stylesheet" type="text/css" href=" {{ url_for('static',filename='admin-css/bootstrap.css') }}">
+     <!-- FONTAWESOME STYLES-->
+    <!--<link href="assets/css/font-awesome.css" rel="stylesheet" />-->
+    <link rel="stylesheet" type="text/css" href=" {{ url_for('static',filename='admin-css/font-awesome.css') }}">
+     <!-- MORRIS CHART STYLES-->
+    <!--<link href="assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />-->
+    <link rel="stylesheet" type="text/css" href=" {{ url_for('static',filename='admin-js/morris/morris-0.4.3.min.css') }}">
+        <!-- CUSTOM STYLES-->
+    <!--<link href="assets/css/custom.css" rel="stylesheet" />-->
+    <link rel="stylesheet" type="text/css" href=" {{ url_for('static',filename='admin-css/custom.css') }}">
+     <!-- GOOGLE FONTS-->
+   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+     <!-- TABLE STYLES-->
+    <link href="assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+<style>
+    * {
+  box-sizing: border-box;
+}
+    #success_tic .page-body{
+  max-width:300px;
+  background-color:#FFFFFF;
+  margin:10% auto;
+}
+ #success_tic .page-body .head{
+  text-align:center;
+}
+/* #success_tic .tic{
+  font-size:186px;
+} */
+#success_tic .close{
+      opacity: 1;
+    position: absolute;
+    right: 0px;
+    font-size: 30px;
+    padding: 3px 15px;
+  margin-bottom: 10px;
+}
+#success_tic .checkmark-circle {
+  width: 150px;
+  height: 150px;
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+}
+.checkmark-circle .background {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: #1ab394;
+  position: absolute;
+}
+#success_tic .checkmark-circle .checkmark {
+  border-radius: 5px;
+}
+#success_tic .checkmark-circle .checkmark.draw:after {
+  -webkit-animation-delay: 300ms;
+  -moz-animation-delay: 300ms;
+  animation-delay: 300ms;
+  -webkit-animation-duration: 1s;
+  -moz-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-timing-function: ease;
+  -moz-animation-timing-function: ease;
+  animation-timing-function: ease;
+  -webkit-animation-name: checkmark;
+  -moz-animation-name: checkmark;
+  animation-name: checkmark;
+  -webkit-transform: scaleX(-1) rotate(135deg);
+  -moz-transform: scaleX(-1) rotate(135deg);
+  -ms-transform: scaleX(-1) rotate(135deg);
+  -o-transform: scaleX(-1) rotate(135deg);
+  transform: scaleX(-1) rotate(135deg);
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+#success_tic .checkmark-circle .checkmark:after {
+  opacity: 1;
+  height: 75px;
+  width: 37.5px;
+  -webkit-transform-origin: left top;
+  -moz-transform-origin: left top;
+  -ms-transform-origin: left top;
+  -o-transform-origin: left top;
+  transform-origin: left top;
+  border-right: 15px solid #fff;
+  border-top: 15px solid #fff;
+  border-radius: 2.5px !important;
+  content: '';
+  left: 35px;
+  top: 80px;
+  position: absolute;
+}
+
+@-webkit-keyframes checkmark {
+  0% {
+    height: 0;
+    width: 0;
+    opacity: 1;
+  }
+  20% {
+    height: 0;
+    width: 37.5px;
+    opacity: 1;
+  }
+  40% {
+    height: 75px;
+    width: 37.5px;
+    opacity: 1;
+  }
+  100% {
+    height: 75px;
+    width: 37.5px;
+    opacity: 1;
+  }
+}
+@-moz-keyframes checkmark {
+  0% {
+    height: 0;
+    width: 0;
+    opacity: 1;
+  }
+  20% {
+    height: 0;
+    width: 37.5px;
+    opacity: 1;
+  }
+  40% {
+    height: 75px;
+    width: 37.5px;
+    opacity: 1;
+  }
+  100% {
+    height: 75px;
+    width: 37.5px;
+    opacity: 1;
+  }
+}
+@keyframes checkmark {
+  0% {
+    height: 0;
+    width: 0;
+    opacity: 1;
+  }
+  20% {
+    height: 0;
+    width: 37.5px;
+    opacity: 1;
+  }
+  40% {
+    height: 75px;
+    width: 37.5px;
+    opacity: 1;
+  }
+  100% {
+    height: 75px;
+    width: 37.5px;
+    opacity: 1;
+  }
+}
+
+
+</style>
+
+</head>
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0;width:100%;position:fixed">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Binary admin</a>
+            </div>
+  <div style="color: white;
+padding: 15px 50px 5px 50px;
+float: right;
+font-size: 16px;"> &nbsp; <a href="/admin-logout" class="btn btn-danger square-btn-adjust">Logout</a> </div>
+        </nav>
+           <!-- /. NAV TOP  -->
+                <nav class="navbar-default navbar-side" role="navigation" style="margin-top: 60px;height:100%;position: fixed">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+				<li class="text-center">
+                    <a href="/adminMain"> <img src="{{ url_for('static',filename="admin-img/find_user.png") }}" class="user-image img-responsive"/></a>
+					</li>
+
+
+                   <li>
+                        <a  href="/showfeedback"><i class="fa fa-dashboard fa-3x"></i> Feedback</a>
+                    </li>
+
+<li>
+                    <a href="#"><i class="fa fa-edit fa-3x"></i>Products<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="/adminMain">DS Products</a>
+                            </li>
+                            <li>
+                                <a href="/addProduct">Add Product</a>
+                            </li>
+
+                        </ul>
+                      </li>
+                    <li>
+
+                        <a  href="#"><i class="fa fa-qrcode fa-3x"></i> Third-Party Products<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="/userApproved">Approved</a>
+                            </li>
+                            <li>
+                                <a href="/pending-requests">Pending</a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+
+<li>
+                    <a href="/showOrder"><i class="fa fa-bar-chart-o fa-3x"></i> Orders</a>
+
+                      </li>
+                    <li>
+                        <a class="active-menu" href="/anounce"><i class="fa fa-bullhorn fa-3x"></i> Make Announcement</a>
+                    </li>
+
+
+
+
+
+
+                </ul>
+
+            </div>
+
+        </nav>
+        <!-- /. NAV SIDE  -->
+
+<main style="background-color: whitesmoke">
+
+
+<div class="container" style="padding-left:220px ;padding-top:100px;padding-bottom: 65px">
+
+<h1>Enter Announcment</h1>
+    <br>
+    <form action="/announcement" method="post" enctype="multipart/form-data" class="form-group">
+
+ <div class="form-row">
+    <div class="col-md-7 mb-3">
+    <label for="subject">Subject</label><br>
+    <input id="input" class="form-control" type="text" name="sub"  placeholder="Subject...." required>
+    </div>
+    <br>
+     <div class="col-md-6 mb-3">
+         <br>
+    <label for="messagebody">Announcement</label><br>
+    <textarea id="messagebody" class="form-control" rows="10" name="message" placeholder="Make Announcment here......" required></textarea>
+
+     </div>
+    </div>
+
+            <div class="col-md-12 mb-3">
+                <br>
+    <input type="submit" id="submit" value="Send message" class="btn btn-success">
+                </div>
+
+</form>
+
+
+
+        </div>
+
+
+
+
+
+
+</main>
+
+    </div>
+
+
+
+
+    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+    <!-- JQUERY SCRIPTS -->
+    <script src="assets/js/jquery-1.10.2.js"></script>
+    <script src="{{url_for('static', filename='admin-js/jquery-1.10.2.js')}}"></script>
+      <!-- BOOTSTRAP SCRIPTS -->
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="{{url_for('static', filename='admin-js/bootstrap.min.js')}}"></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src="assets/js/jquery.metisMenu.js"></script>
+    <script src="{{url_for('static', filename='admin-js/jquery.metisMenu.js')}}"></script>
+     <!-- MORRIS CHART SCRIPTS -->
+     <script src="assets/js/morris/raphael-2.1.0.min.js"></script>
+    <script src="{{url_for('static', filename='admin-js/morris/raphael-2.1.0.min.js')}}"></script>
+    <script src="assets/js/morris/morris.js"></script>
+    <script src="{{url_for('static', filename='admin-js/morris/morris.js')}}"></script>
+      <!-- CUSTOM SCRIPTS -->
+    <script src="assets/js/custom.js"></script>
+    <script src="{{url_for('static', filename='admin-js/custom.js')}}"></script>
+
+      {% if status %}
+
+        <div id="success_tic" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <a class="close" href="#" data-dismiss="modal">&times;</a>
+      <div class="page-body">
+    <div class="head">
+      <h3 style="margin-top:5px;">Congratulations</h3>
+      <h4>Announcemnt is sent to Registerd Users</h4>
+    </div>
+
+  <h1 style="text-align:center;"><div class="checkmark-circle">
+  <div class="background"></div>
+  <div class="checkmark draw"></div>
+</div></h1>
+
+  </div>
+</div>
+    </div>
+
+  </div>
+        <script>
+$("#success_tic").modal('show');
+
+</script>
+
+    {% endif %}
+    {% if status==False %}
+        <script>
+            alert("Announcement nor made ");
+        </script>
+    {% endif %}
+
+</body>
+</html>

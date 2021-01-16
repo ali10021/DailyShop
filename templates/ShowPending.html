@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+      <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Free Bootstrap Admin Template : Binary Admin</title>
+	<!-- BOOTSTRAP STYLES-->
+    <!-- BOOTSTRAP STYLES-->
+    <!--<link href="assets/css/bootstrap.css" rel="stylesheet" />-->
+     <link rel="stylesheet" type="text/css" href=" {{ url_for('static',filename='admin-css/bootstrap.css') }}">
+     <!-- FONTAWESOME STYLES-->
+    <!--<link href="assets/css/font-awesome.css" rel="stylesheet" />-->
+    <link rel="stylesheet" type="text/css" href=" {{ url_for('static',filename='admin-css/font-awesome.css') }}">
+     <!-- MORRIS CHART STYLES-->
+    <!--<link href="assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />-->
+    <link rel="stylesheet" type="text/css" href=" {{ url_for('static',filename='admin-js/morris/morris-0.4.3.min.css') }}">
+        <!-- CUSTOM STYLES-->
+    <!--<link href="assets/css/custom.css" rel="stylesheet" />-->
+    <link rel="stylesheet" type="text/css" href=" {{ url_for('static',filename='admin-css/custom.css') }}">
+     <!-- GOOGLE FONTS-->
+   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+     <!-- TABLE STYLES-->
+    <link href="assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
+</head>
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Binary admin</a>
+            </div>
+  <div style="color: white;
+padding: 15px 50px 5px 50px;
+float: right;
+font-size: 16px;"> &nbsp; <a href="/admin-logout" class="btn btn-danger square-btn-adjust">Logout</a> </div>
+        </nav>
+           <!-- /. NAV TOP  -->
+               <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+				<li class="text-center">
+                    <a href="/adminMain"> <img src="{{ url_for('static',filename="admin-img/find_user.png") }}" class="user-image img-responsive"/></a>
+					</li>
+
+
+                    <li>
+                        <a  href="/showfeedback"><i class="fa fa-dashboard fa-3x"></i> Feedback</a>
+                    </li>
+
+<li>
+                    <a href="#"><i class="fa fa-edit fa-3x"></i>Products<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="/adminMain">DS Products</a>
+                            </li>
+                            <li>
+                                <a href="/addProduct">Add Product</a>
+                            </li>
+
+                        </ul>
+                      </li>
+                    <li>
+
+                        <a class="active-menu"  href="#"><i class="fa fa-qrcode fa-3x"></i> Third-Party Products<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="/userApproved">Approved</a>
+                            </li>
+                            <li>
+                                <a class="active-menu" href="/pending-requests">Pending</a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+
+<li>
+                    <a href="/showOrder"><i class="fa fa-bar-chart-o fa-3x"></i> Orders</a>
+
+                      </li>
+                <li>
+                        <a  href="/anounce"><i class="fa fa-bullhorn fa-3x"></i> Make Announcement</a>
+                    </li>
+
+
+
+
+
+
+                </ul>
+
+            </div>
+
+        </nav>
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper" >
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+                     <h2>Pending Requests</h2>
+
+
+                    </div>
+                </div>
+                 <!-- /. ROW  -->
+                 <hr />
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Advanced Tables -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Pending Requests
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr >
+                                            <th style="flex: 1;">ID</th>
+                                            <th style="flex: 1;">Product</th>
+                                            <th style="flex: 1;">Title</th>
+                                            <th style="flex: 1;">Price</th>
+                                            <th style="flex: 1;">Category</th>
+                                            <th style="flex: 1;">Sub Category</th>
+                                            <th style="flex: 1;">Available Stock </th>
+
+                                            <th style="flex: 2;">Approve</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for x in listOfProducts %}
+                                        {%   set ff="images/"+x[8] %}
+                                        <tr class="odd gradeX" id="{{  x[0] }}">
+                                            <td style="flex: 1;">{{  x[0] }}</td>
+                                            <td style="flex: 1;" width="15%"><img src="{{ url_for('static',filename = ff) }}" width="100%" height="100px"> </td>
+                                            <td style="flex: 1;">{{ x[1] }}</td>
+                                            <td class="center" style="flex: 1;">{{ x[5] }}</td>
+                                            <td class="center" style="flex: 1;">{{ x[6] }}</td>
+                                            <td class="center" style="flex: 1;">{{ x[7] }}</td>
+                                            <td class="center" style="flex: 1;">{{ x[9] }}</td>
+
+                                            <td style="flex: 1;"><input type="button" class="btn btn-success" value="Approve" onclick="approveProduct({{ x[0] }})"></td>
+                                        </tr>
+                                    {% endfor %}
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--End Advanced Tables -->
+                </div>
+            </div>
+                <!-- /. ROW  -->
+
+        </div>
+
+    </div>
+             <!-- /. PAGE INNER  -->
+            </div>
+
+         <!-- /. PAGE WRAPPER  -->
+     <!-- /. WRAPPER  -->
+    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+    <!-- JQUERY SCRIPTS -->
+    <script src="assets/js/jquery-1.10.2.js"></script>
+    <script src="{{url_for('static', filename='admin-js/jquery-1.10.2.js')}}"></script>
+      <!-- BOOTSTRAP SCRIPTS -->
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="{{url_for('static', filename='admin-js/bootstrap.min.js')}}"></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src="assets/js/jquery.metisMenu.js"></script>
+    <script src="{{url_for('static', filename='admin-js/jquery.metisMenu.js')}}"></script>
+     <!-- DATA TABLE SCRIPTS -->
+    <script src="assets/js/dataTables/jquery.dataTables.js"></script>
+    <script src="{{url_for('static', filename='admin-js/dataTables/jquery.dataTables.js')}}"></script>
+    <script src="assets/js/dataTables/dataTables.bootstrap.js"></script>
+    <script src="{{url_for('static', filename='admin-js/dataTables/dataTables.bootstrap.js')}}"></script>
+        <script>
+            $(document).ready(function () {
+                $('#dataTables-example').dataTable();
+            });
+    </script>
+         <!-- CUSTOM SCRIPTS -->
+    <script src="assets/js/custom.js"></script>
+<script src="{{url_for('static', filename='admin-js/custom.js')}}"></script>
+
+<script>
+    function approveProduct(x)
+        {
+            var ajaxReq= new XMLHttpRequest();
+            ajaxReq.open("POST","/approve",true);
+            ajaxReq.send(x)
+            ajaxReq.onreadystatechange = function (){
+            if(ajaxReq.readyState==4 && ajaxReq.status==200 )
+            {
+                var data=JSON.parse(ajaxReq.responseText);
+                if(data[0].check=="true")
+                {
+                    var row = document.getElementById(x);
+                        row.parentNode.removeChild(row);
+                }
+                else
+                {
+                    alert("Not Aproved")
+                }
+            }
+        }
+
+        }
+</script>
+
+
+
+</body>
+</html>

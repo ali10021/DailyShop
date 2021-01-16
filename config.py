@@ -1,0 +1,5 @@
+DATABASEIP = 'localhost'
+DB_USER = 'root'
+DB_PASSWORD = 'PakarmyForce8790'
+DATABASE = 'web_project'
+SECRET_KEY = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
