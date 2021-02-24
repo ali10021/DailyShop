@@ -1,4 +1,4 @@
-
+from app import app
 # import wala saman
 from flask import Flask, render_template, request, session, redirect, url_for, send_from_directory, flash ,jsonify
 from werkzeug.utils import secure_filename
@@ -13,25 +13,6 @@ APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 UPLOAD_FOLDER = '\\Users\\hp\\PycharmProjects\\shop\\static\\images'
 
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
-def app_create():
-    app = Flask(__name__)
-
-    app.config.from_object('config')
-    app.secret_key = app.config["SECRET_KEY"]
-    # app.secret_key = "gfsjhfg-87t678564786"
-
-    mail = Mail(app)
-
-    app.config['MAIL_SERVER'] ='smtp.gmail.com'
-    app.config['MAIL_PORT'] = 465
-    app.config['MAIL_USERNAME'] = 'ahmed345amjad@gmail.com'
-    app.config['MAIL_PASSWORD'] = 'bitf18a002'
-    app.config['MAIL_USE_TLS'] = False
-    app.config['MAIL_USE_SSL'] = True
-    mail = Mail(app)
-    return app
-otp = randint(000000, 999999)
-app=app_create()
 
 @app.route('/')
 def hello_world():
